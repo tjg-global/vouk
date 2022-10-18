@@ -69,13 +69,7 @@ def main(command_or_folder=".", username="", working_directory="."):
     )
 
 def command_line():
-    #
-    # If no extra params are supplied, dump out a useful help string
-    #
-    if len(sys.argv) == 1:
-        print("%s [[command_or_folder] [username] [working_directory]]" % sys.argv[0])
-    else:
-        main(*sys.argv[1:])
+    main(*sys.argv[1:])
 
 if __name__ == '__main__':
     main(*sys.argv[1:])

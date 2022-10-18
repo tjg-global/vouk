@@ -4,7 +4,7 @@ import setuptools
 
 setuptools.setup(
     name='vouk',
-    version='1.1.3',
+    version='2.0',
     description='Switch to VOUK Domain',
     author='Tim Golden',
     author_email='tim.golden@global.com',
@@ -12,7 +12,7 @@ setuptools.setup(
     packages = ["vouk"],
     entry_points = {
         "console_scripts" : [
-            "voukx=vouk.vouk:command_line",
+            "vouk=vouk.vouk:command_line",
         ]
     }
 )
