@@ -33,6 +33,7 @@ def get_default_username():
     return ""
 
 def main(command_or_folder=".", username="", working_directory="."):
+    print(command_or_folder, username, working_directory)
     default_username = username or get_default_username()
     if not default_username:
         raise RuntimeError("No default account in vouk.ini and no username on command-line")
@@ -51,16 +52,20 @@ def main(command_or_folder=".", username="", working_directory="."):
     # cmd window; otherwise it's a command
     #
     if command_or_folder == ".":
+        print("Command folder is .")
         command_or_folder = os.getcwd()
     if os.path.isdir(command_or_folder):
+        print("command folder is dir")
         command_line = CMD_FILEPATH + ' /k '
         command_line += 'title Running as %s\\%s && ' % (domain, username)
         if os.path.exists(STARTUP_FILEPATH):
             command_line += STARTUP_FILEPATH + ' "' + command_or_folder + '"'
         command_line += ''
     else:
+        print("Neither . nor dir")
         command_line = command_or_folder
 
+    print(username, domain, command_line, working_directory)
     _advapi32.CreateProcessWithLogonW(
         username, domain, password,
         _advapi32.LOGON_FLAGS.NETCREDENTIALS_ONLY,
